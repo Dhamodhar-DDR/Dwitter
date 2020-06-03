@@ -12,12 +12,12 @@ function Mess_box(props) {
                     <br />
                 </div>
             </div >
-            <div class="container">
+            <label class="container">
                 <input type="checkbox" id={props.message[2]} checked={props.check_like} onClick={() => props.likefun(props.message[2], props.message[3])} />
                 <span class="checkmark1">
                     <i class="material-icons">favorite_border</i>
                 </span>
-            </div>
+            </label>
             <div className="options">
                 <div className="like_count">{props.message[1].likes.length}</div>
                 <a class="button" href={"#" + "com_id" + props.message[2]}><i class="material-icons">chat_bubble_outline</i></a>
