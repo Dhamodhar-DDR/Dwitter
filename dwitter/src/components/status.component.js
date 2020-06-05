@@ -187,7 +187,7 @@ class Status extends Component {
                 <div className="column0"></div>
                 <div className="column1">
                     <div className="lefnav">
-                        <Navbar profilename={this.props.match.params.profilename} />
+                        <Navbar notif_num="" profilename={this.props.match.params.profilename} />
                     </div>
                 </div>
                 <div className="column2">

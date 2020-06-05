@@ -15,6 +15,7 @@
 
 .container {
     position: absolute;
+    z-index: 0;
     padding-left: 35px;
     margin-left: 55px;
     margin-bottom: 25px;

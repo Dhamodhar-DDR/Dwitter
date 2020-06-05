@@ -138,9 +138,11 @@ class Home extends Component {
 
     handle_search_submit(e) {
         e.preventDefault();
-        this.props.history.push(
-            "/profile/" + this.props.match.params.profilename + "/" + this.state.search
-        );
+        if (this.state.search != "") {
+            this.props.history.push(
+                "/profile/" + this.props.match.params.profilename + "/" + this.state.search
+            );
+        }
     }
 
     handle_submit(e) {
@@ -291,7 +293,9 @@ class Home extends Component {
                             placeholder="Search Dwitter"
                             required
                             onChange={this.handle_search}
-                        /><i style={{ cursor: "pointer" }} onClick={this.handle_search_submit} className="material-icons">search</i>
+                        />
+                        <i style={{ cursor: "pointer" }} onClick={this.handle_search_submit} className="material-icons">search</i>
+
                     </div>
                     <div className="newdweet_form">
                         <br />

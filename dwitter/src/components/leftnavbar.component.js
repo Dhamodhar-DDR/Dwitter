@@ -18,31 +18,35 @@ function Navbar(props) {
           <li class="nav-item">
             <a class="nav-link" href={home_url}>
               <i className="large material-icons">home</i>
-               Home
+              &nbsp; Home
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href={notifications_url}>
-              Notifications  {"      " + props.notif_num}
+              <i className="large material-icons">notifications_none</i>
+              &nbsp; Notifications  {"      " + props.notif_num}
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="#">
-              Bookmarks
+              <i className="large material-icons">bookmark_border</i>
+              &nbsp;&nbsp;Bookmarks
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href={profile_url}>
-              Profile
+              <i className="large material-icons">person_outline</i>
+            &nbsp;&nbsp;Profile
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href={logout_url}>
-              Logout
+              <i className="large material-icons">login</i>
+              &nbsp;&nbsp;Logout
             </a>
           </li>
 
