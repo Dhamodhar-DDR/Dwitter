@@ -19,6 +19,7 @@ class Profiles extends Component {
     this.edit_location = this.edit_location.bind(this);
     this.edit_name = this.edit_name.bind(this);
     this.edit_submit = this.edit_submit.bind(this);
+    this.edit_propic = this.edit_propic.bind(this);
 
     this.state = {
       messages: [],
@@ -61,6 +62,7 @@ class Profiles extends Component {
           name: res.data[0],
           bio: res.data[1],
           location: res.data[2],
+          profilepic: res.data[3],
         }
         this.setState({
           edit_details: temp
@@ -73,6 +75,7 @@ class Profiles extends Component {
           name: res.data[0],
           bio: res.data[1],
           location: res.data[2],
+          profilepic: res.data[3],
         }
         this.setState({
           user_details: temp2
@@ -212,11 +215,9 @@ class Profiles extends Component {
   }
 
   handle_comments2(e) {
-    // console.log("ADSAd")
     this.setState({
       comment: e.target.value,
     })
-    // console.log(this.state.comment)
   }
 
   handle_messbox_onClick(belike) {
@@ -235,6 +236,21 @@ class Profiles extends Component {
       var comment_cont = "";
       return <Mess_box handle_messbox_onClick={this.handle_messbox_onClick} comment_cont={comment_cont} handle_comments={this.handle_comments} handle_comments2={this.handle_comments2} close_popup={this.close_popup} check_like={check} pname={this.props.match.params.profilename} message={cur_mess} DP={DP} likefun={this.handle_likes} />;
     });
+  }
+
+  edit_propic(e) {
+    var temp2 = this.state.edit_details;
+    var temp = e.target.files[0];
+    const reader = new FileReader();
+    const self = this;
+    reader.addEventListener("load", function () {
+      temp2.profilepic = this.result;
+      self.setState({
+        edit_details: temp2
+      })
+      console.log(this.result)
+    })
+    reader.readAsDataURL(temp);
   }
 
   edit_name(e) {
@@ -269,6 +285,7 @@ class Profiles extends Component {
       name: this.state.edit_details.name,
       bio: this.state.edit_details.bio,
       location: this.state.edit_details.location,
+      profilepic: this.state.edit_details.profilepic,
     }
     this.setState({
       user_details: this.state.edit_details
@@ -295,6 +312,9 @@ class Profiles extends Component {
             <div class="popup">
               <a class="close" href="#">&times;</a>
               <form className="form-group" >
+                <label for="img"><img className="editprofile_pic" src={this.state.edit_details.profilepic} /></label>
+                <input type="file" id="img" name="img" style={{ visibility: "hidden" }} value={this.state.edit_details.propic} onChange={this.edit_propic} accept="image/*" />
+                <br />
                 <label>Name</label>
                 <br />
                 <input onChange={this.edit_name} value={this.state.edit_details.name} type="text" />
@@ -315,10 +335,6 @@ class Profiles extends Component {
   }
 
   render() {
-    const image = {
-      height: "15%",
-      borderRadius: "50%",
-    };
     const DPstyle = {
       height: "9%",
       width: "9%",
@@ -340,7 +356,7 @@ class Profiles extends Component {
           </div>
           <div className="column2">
             <h5 className="Heading">{this.props.match.params.searchval}</h5>
-            <img src={require("./CSS/def_dp.png")} style={image} />
+            <img className="profile_pic" src={this.state.user_details.profilepic} />
             <h4>{this.props.match.params.searchval}</h4>
             <p>{this.state.user_details.bio}</p>
             {this.ownfun()}

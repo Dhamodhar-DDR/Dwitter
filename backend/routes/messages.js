@@ -9,7 +9,9 @@ router.route("/createdweet").post(function (req, res) {
       time_act: req.body.time,
       time_s: req.body.time_s,
       mess_id: user.total_mess_len + 1,
+      image_files: req.body.image_files,
     }
+    console.log(req.body.image_files)
     user.messages.unshift(newMessage);
     user.total_mess_len += 1;
 

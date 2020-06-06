@@ -1,4 +1,3 @@
-
 .mess_box:hover{
   transition: 0.23s;
   background-color: rgba(214, 235, 253, 0.527);
@@ -127,6 +126,7 @@
     border-radius: 5px;
     width: 35%;
     position: relative;
+    z-index: 10px;
     transition: all 5s ease-in-out;
   }
   
@@ -147,9 +147,7 @@
     text-decoration: none;
     color: #333;
   }
-  .popup .close:hover {
-    color: #06D85F;
-  }
+
   .popup .content {
     max-height: 30%;
     overflow: auto;
@@ -210,4 +208,22 @@
   .notification_box:hover{
     background-color: rgba(148, 226, 245, 0.479);
     cursor: pointer;
+  }
+  .profile_pic{
+    margin-left: 3px;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+  }
+  .editprofile_pic{
+    margin-left: 3px;
+    /* background-image: url("def_dp.png"); */
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+  }
+  .editprofile_pic:hover{
+    cursor: pointer;
+    transition: 0.3s;
+    filter:  brightness(1.15) ;
   }

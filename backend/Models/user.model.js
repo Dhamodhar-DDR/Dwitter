@@ -18,6 +18,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
+  profilepic: {
+    type: Object,
+    required: true,
+  },
   bio: {
     type: String,
     maxlength: 150,

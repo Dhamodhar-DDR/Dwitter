@@ -58,6 +58,7 @@ class Signup extends Component {
       name: this.state.name,
       profilename: this.state.profilename,
       password: this.state.password,
+      profilepic: require("./CSS/def_dp.png")
     };
     if (this.state.pnameflag !== "This profile name is already taken") {
       axios

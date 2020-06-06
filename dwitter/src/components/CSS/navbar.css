@@ -11,6 +11,11 @@
     /* filter: blur(8px);
   -webkit-filter: blur(8px); */
   width: 15%;
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+     -ms-user-select: none; /* Internet Explorer/Edge */
+         user-select: none; 
   
 }
 
@@ -57,7 +62,6 @@
   }
 .nav-link:hover{
   background-color: rgba(148, 226, 245, 0.479);
-  color: rgb(15, 167, 238);
 }
 
 .nav-link2 {
@@ -83,7 +87,7 @@
 }
 
 .nav-link-pname {
-  margin-top: 585px;
+  margin-top: 545px;
 }
 
 .topnav {
@@ -93,6 +97,11 @@
   position: fixed;
   margin-top: -0.1em;
   background-color: white;
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+     -ms-user-select: none; /* Internet Explorer/Edge */
+         user-select: none; 
   width: 622.1px;
   height: 50px;
   z-index: 1;

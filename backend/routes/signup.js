@@ -11,6 +11,7 @@ router.route("/signup").post(function (req, res) {
   const name = req.body.name;
   const profilename = req.body.profilename;
   const password = req.body.password;
+  const profilepic = req.body.profilepic;
   const bio = "";
   const location = "";
   const messages = [];
@@ -28,6 +29,7 @@ router.route("/signup").post(function (req, res) {
     name,
     profilename,
     password,
+    profilepic,
     bio,
     location,
     messages,
@@ -95,7 +97,7 @@ router.route("/auth/:profilename").get(function (req, res) {
 router.route("/details/:profilename").get(function (req, res) {
   User.findOne({ profilename: req.params.profilename })
     .then((user) => {
-      res.json([user.name, user.bio, user.location])
+      res.json([user.name, user.bio, user.location, user.profilepic])
     })
 })
 
@@ -105,6 +107,7 @@ router.route("/update/:profilename").post(function (req, res) {
       user.name = req.body.name;
       user.bio = req.body.bio;
       user.location = req.body.location;
+      user.profilepic = req.body.profilepic;
 
       user.save()
         .then(() => { })

@@ -153,12 +153,12 @@ class Home extends Component {
             message: this.state.newmessage,
             time: new Date().toLocaleString(),
             time_s: new Date().getTime(),
+            image_files: this.state.image_files,
         };
         if (this.state.newmessage !== "") {
             axios
                 .post("http://localhost:7070/messages/createdweet", packet)
                 .then((res) => {
-                    console.log("Hello");
                     window.location.reload(false);
                 })
                 .catch((err) => console.log(err));
@@ -167,11 +167,10 @@ class Home extends Component {
 
     handle_image_files(e) {
         var temp = this.state.image_files;
-        temp.unshift(e.target.value)
+        temp.unshift(e.target.files[0])
         this.setState({
             image_files: temp
         })
-        console.log(this.state.image_files)
     }
 
     handle_likes(belike, mess_len) {
@@ -286,7 +285,7 @@ class Home extends Component {
                 </div>
                 <div className="column2" onScroll={this.handleScroll}>
                     <div className="topnav">
-                        Home
+                        &nbsp;&nbsp;&nbsp;&nbsp;Home
                         <input
                             type="text"
                             style={{ marginLeft: "60px", width: "400px", height: "30px", outline: "none" }}
@@ -321,7 +320,7 @@ class Home extends Component {
                                 style={{ float: "right", borderRadius: "90px" }}
                             />
                             <label for="img"><i class="material-icons" style={img_upload_btn}>add_photo_alternate</i></label>
-                            <input type="file" id="img" name="img" onChange={this.handle_image_files} value={this.state.image_files} style={{ visibility: "hidden" }} accept="image/*" />
+                            <input type="file" id="img" name="img" onChange={this.handle_image_files} style={{ visibility: "hidden" }} accept="image/*" />
                         </form>
                     </div>
                     {this.DisplayDweets(this.state.messages, DP)}
