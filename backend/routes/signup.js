@@ -97,7 +97,7 @@ router.route("/auth/:profilename").get(function (req, res) {
 router.route("/details/:profilename").get(function (req, res) {
   User.findOne({ profilename: req.params.profilename })
     .then((user) => {
-      res.json([user.name, user.bio, user.location, user.profilepic])
+      res.json([user.name, user.bio, user.location, user.profilepic, user.followers.length, user.following.length - 1])
     })
 })
 
