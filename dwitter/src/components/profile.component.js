@@ -38,7 +38,10 @@ class Profiles extends Component {
         location: "",
         profilepic: "",
       },
+      followers_count: 0,
+      following_count: 0,
       notif_num: "",
+      load: "block",
     };
   }
 
@@ -75,7 +78,9 @@ class Profiles extends Component {
           profilepic: res.data[3],
         }
         this.setState({
-          edit_details: temp
+          edit_details: temp,
+          followers_count: res.data[4],
+          following_count: res.data[5],
         })
       })
 
@@ -108,7 +113,9 @@ class Profiles extends Component {
         var temparray = this.state.messages.concat(temp);
         this.setState({
           messages: temparray,
+          load: "none",
         })
+        document.getElementById("loader").style.display = this.state.load;
       });
 
     if (!this.state.own) {
@@ -141,7 +148,12 @@ class Profiles extends Component {
     if (this.state.isfollow === "Follow") {
       axios
         .post("http://localhost:7070/follow/follower/" + this.props.match.params.searchval, followingname)
-        .then(() => { })
+        .then(() => {
+          var ftemp = this.state.followers_count;
+          this.setState({
+            followers_count: ftemp + 1,
+          })
+        })
         .catch((err) => console.log(err));
       axios
         .post("http://localhost:7070/follow/following/" + this.props.match.params.profilename, followername)
@@ -155,7 +167,12 @@ class Profiles extends Component {
     else if (this.state.isfollow === "Unfollow") {
       axios
         .post("http://localhost:7070/follow/unfollower/" + this.props.match.params.searchval, followingname)
-        .then(() => { })
+        .then(() => {
+          var ftemp = this.state.followers_count;
+          this.setState({
+            followers_count: ftemp - 1,
+          })
+        })
         .catch((err) => console.log(err));
       axios
         .post("http://localhost:7070/follow/unfollowing/" + this.props.match.params.profilename, followername)
@@ -367,17 +384,20 @@ class Profiles extends Component {
             <h5 className="Heading">{this.props.match.params.searchval}</h5>
             <img style={{ marginLeft: "20px" }} className="profile_pic" src={this.state.user_details.profilepic} />
             <h4 style={{ marginLeft: "20px" }}>{this.state.user_details.name}</h4>
+            <p style={{ float: "right" }}> {this.state.followers_count} Followers  &nbsp; {this.state.following_count} Following &nbsp;&nbsp;&nbsp;&nbsp; </p>
             <p style={{ marginLeft: "20px", color: "rgba(0,0,0,0.5)" }}>@{this.props.match.params.searchval}</p>
             <p style={{ marginLeft: "20px", fontSize: "15px" }}>{this.state.user_details.bio}</p>
             {this.ownfun()}
             <br />
             <br />
-            {this.DisplayDweets(this.state.messages, DPstyle)}
+            <button className="profile_buttons">Dweets</button >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button className="profile_buttons">Liked Dweets</button>
+            <div>{this.DisplayDweets(this.state.messages, DPstyle)}</div>
+            <div className="loader" id="loader"></div>
           </div>
           <div className="column1"></div>
           <div className="column3"></div>
         </div>
-
       </div>
     );
   }

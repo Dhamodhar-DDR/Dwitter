@@ -36,6 +36,7 @@ class Home extends Component {
                 location: "",
                 profilepic: "",
             },
+            load: "block",
         };
     }
 
@@ -46,6 +47,7 @@ class Home extends Component {
         const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
         const windowBottom = windowHeight + window.pageYOffset;
         if (windowBottom >= docHeight) {
+            document.getElementById("loader").style.display = "block";
             axios
                 .get(
                     "http://localhost:7070/messages/" + this.props.match.params.profilename
@@ -63,6 +65,7 @@ class Home extends Component {
                     this.setState({
                         messages: temparray,
                     });
+                    document.getElementById("loader").style.display = "none";
                 })
                 .catch((err) => console.log(err));
         }
@@ -136,7 +139,9 @@ class Home extends Component {
                 var temparray = this.state.messages.concat(temp);
                 this.setState({
                     messages: temparray,
+                    load: "none",
                 });
+                document.getElementById("loader").style.display = this.state.load;
             })
             .catch((err) => console.log(err));
         window.addEventListener("scroll", this.handleScroll);
@@ -269,13 +274,15 @@ class Home extends Component {
 
     DisplayDweets(temparr, DP) {
         return temparr.map((cur_mess) => {
-            var index = cur_mess[1].likes.indexOf(this.props.match.params.profilename)
-            var check = "";
-            if (index >= 0) {
-                check = "checked";
+            if (cur_mess !== null) {
+                var index = cur_mess[1].likes.indexOf(this.props.match.params.profilename)
+                var check = "";
+                if (index >= 0) {
+                    check = "checked";
+                }
+                var comment_cont = "";
+                return <Mess_box propic={cur_mess[4]} handle_messbox_onClick={this.handle_messbox_onClick} comment_cont={comment_cont} handle_comments={this.handle_comments} handle_comments2={this.handle_comments2} close_popup={this.close_popup} check_like={check} pname={this.props.match.params.profilename} message={cur_mess} DP={DP} likefun={this.handle_likes} />;
             }
-            var comment_cont = "";
-            return <Mess_box propic={cur_mess[4]} handle_messbox_onClick={this.handle_messbox_onClick} comment_cont={comment_cont} handle_comments={this.handle_comments} handle_comments2={this.handle_comments2} close_popup={this.close_popup} check_like={check} pname={this.props.match.params.profilename} message={cur_mess} DP={DP} likefun={this.handle_likes} />;
         });
     }
 
@@ -347,6 +354,7 @@ class Home extends Component {
                         </form>
                     </div>
                     {this.DisplayDweets(this.state.messages, DP)}
+                    <div className="loader" id="loader"></div>
                 </div>
                 <div className="column1"></div>
                 <div className="column3"></div>
