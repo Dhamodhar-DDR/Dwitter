@@ -30,7 +30,12 @@ class Home extends Component {
             search: "",
             users: [],
             notif_num: "",
-            image_files: [],
+            user_details: {
+                name: "",
+                bio: "",
+                location: "",
+                profilepic: "",
+            },
         };
     }
 
@@ -46,9 +51,15 @@ class Home extends Component {
                     "http://localhost:7070/messages/" + this.props.match.params.profilename
                 )
                 .then((res) => {
-                    // console.log(res.data);
+                    var temp = res.data, i = 0;
+                    for (i = 0; i < temp.length; i++) {
+                        var t = this.state.messages_len;
+                        this.setState({
+                            messages_len: t + 1,
+                        })
+                        temp[i].splice(3, 0, this.state.messages_len)
+                    }
                     var temparray = this.state.messages.concat(res.data);
-                    // console.log(temparray);
                     this.setState({
                         messages: temparray,
                     });
@@ -64,6 +75,20 @@ class Home extends Component {
     }
 
     componentDidMount() {
+
+        axios.get("http://localhost:7070/user/details/" + this.props.match.params.profilename)
+            .then(res => {
+                var temp = {
+                    name: res.data[0],
+                    bio: res.data[1],
+                    location: res.data[2],
+                    profilepic: res.data[3],
+                }
+                this.setState({
+                    user_details: temp
+                })
+            })
+
         axios.get("http://localhost:7070/notifications/notif_num/" + this.props.match.params.profilename)
             .then((res) => {
                 if (res.data === 0) {
@@ -88,7 +113,6 @@ class Home extends Component {
                 if (res.data === "Y") {
                     // console.log("");
                 } else {
-                    // console.log(res.data);
                     this.props.history.push("/login");
                 }
             })
@@ -107,7 +131,7 @@ class Home extends Component {
                     this.setState({
                         messages_len: t + 1,
                     })
-                    temp[i].push(this.state.messages_len)
+                    temp[i].splice(3, 0, this.state.messages_len)
                 }
                 var temparray = this.state.messages.concat(temp);
                 this.setState({
@@ -179,7 +203,6 @@ class Home extends Component {
         var checkBox = document.getElementById(belike);
 
         if (checkBox.checked === true) {
-
             temp[mess_len][1].likes.push(this.props.match.params.profilename)
 
             this.setState({
@@ -252,7 +275,7 @@ class Home extends Component {
                 check = "checked";
             }
             var comment_cont = "";
-            return <Mess_box handle_messbox_onClick={this.handle_messbox_onClick} comment_cont={comment_cont} handle_comments={this.handle_comments} handle_comments2={this.handle_comments2} close_popup={this.close_popup} check_like={check} pname={this.props.match.params.profilename} message={cur_mess} DP={DP} likefun={this.handle_likes} />;
+            return <Mess_box propic={cur_mess[4]} handle_messbox_onClick={this.handle_messbox_onClick} comment_cont={comment_cont} handle_comments={this.handle_comments} handle_comments2={this.handle_comments2} close_popup={this.close_popup} check_like={check} pname={this.props.match.params.profilename} message={cur_mess} DP={DP} likefun={this.handle_likes} />;
         });
     }
 
@@ -302,7 +325,7 @@ class Home extends Component {
                         <form onSubmit={this.handle_submit}>
                             <div className="input-group">
                                 <div className="input-group-prepend"></div>
-                                <img src={require("./CSS/def_dp.png")} style={DP} />
+                                <img src={this.state.user_details.profilepic} style={DP} alt="s" />
                                 <textarea
                                     placeholder="What's happening?"
                                     onChange={this.handle_text}

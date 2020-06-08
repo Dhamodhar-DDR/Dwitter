@@ -36,6 +36,7 @@ class Status extends Component {
                     message: res.data[0],
                     Dweet_pname: res.data[1],
                     likes: res.data[0].likes.length,
+                    Dweet_propic: res.data[2],
                 })
                 var index = this.state.message.likes.indexOf(this.props.match.params.profilename)
                 if (index >= 0) {
@@ -197,7 +198,7 @@ class Status extends Component {
                     < div >
                         < div className="messs_box">
                             <br />
-                            <img style={DP} src={require("./CSS/def_dp.png")} />
+                            <img style={DP} src={this.state.Dweet_propic} />
                             <h5 className="M_Box_name">{this.state.Dweet_pname}</h5>
                             <br />
                             <p className="mess_content">{this.state.message.content}</p>

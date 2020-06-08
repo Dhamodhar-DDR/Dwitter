@@ -11,7 +11,6 @@ router.route("/createdweet").post(function (req, res) {
       mess_id: user.total_mess_len + 1,
       image_files: req.body.image_files,
     }
-    console.log(req.body.image_files)
     user.messages.unshift(newMessage);
     user.total_mess_len += 1;
 
@@ -38,21 +37,16 @@ router.route("/deletedweet/:message_id").delete(function (req, res) {
       var i = 0, index = -1;
       temp = user.messages;
       for (i = 0; i < temp.length; i++) {
-        console.log(user.messages[i].mess_id)
-        console.log(mess_num)
         if (user.messages[i].mess_id === parseInt(mess_num, 10)) {
           index = i;
           break;
         }
       }
-      console.log(index);
       if (index > -1) {
         var temp_messages = user.messages;
         temp_messages.splice(index, 1);
-        console.log(temp_messages);
         var temp_comments = user.comments;
         temp_comments.splice(index, 1);
-        console.log("HI1")
         user.save()
         user.updateOne({ comments: temp_comments })
           .then(() => {
@@ -107,7 +101,9 @@ router.route("/:profilename").get(function (req, res) {
                 if (max < followingusers[i].messages[limit].time_s) {
                   max = followingusers[i].messages[limit].time_s;
                   mess_to_send = followingusers[i].messages[limit];
-                  username_of_mess = followingusers[i].profilename;
+                  profilename_of_mess = followingusers[i].profilename;
+                  username_of_mess = followingusers[i].name;
+                  propic_of_mess = followingusers[i].profilepic;
                   id_of_user = followingusers[i]._id;
                   id_of_mess = followingusers[i].messages[limit].mess_id;
                 }
@@ -117,8 +113,8 @@ router.route("/:profilename").get(function (req, res) {
               break;
             }
             var like_store_id = id_of_user + "_" + id_of_mess;
-            send_array.push([username_of_mess, mess_to_send, like_store_id]);
-            temp_store_arr[temp_store_arr.indexOf(username_of_mess) + 1] += 1;
+            send_array.push([username_of_mess, mess_to_send, like_store_id, propic_of_mess]);
+            temp_store_arr[temp_store_arr.indexOf(profilename_of_mess) + 1] += 1;
           }
           mainuser.temp = temp_store_arr;
           mainuser.save()
@@ -144,8 +140,7 @@ router.route("/statusmess/:belike").get(function (req, res) {
           break;
         }
       }
-      send = [send, user.profilename]
-      console.log(send)
+      send = [send, user.profilename, user.profilepic]
       res.json(send);
     })
     .catch(err => res.status(404).json(err));

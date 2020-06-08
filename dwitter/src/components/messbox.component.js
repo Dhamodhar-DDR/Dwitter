@@ -6,7 +6,7 @@ function Mess_box(props) {
             < div className="mess_box" onClick={() => props.handle_messbox_onClick(props.message[2])} >
                 <div style={{}}>
                     <br />
-                    <img style={props.DP} src={require("./CSS/def_dp.png")} />
+                    <img style={props.DP} src={props.propic} />
                     <h5 className="M_Box_name">{props.message[0]}</h5>
                     <p className="mess_content">{props.message[1].content}</p>
                     <br />
@@ -23,7 +23,8 @@ function Mess_box(props) {
                 <a class="button" href={"#" + "com_id" + props.message[2]}><i class="material-icons">chat_bubble_outline</i></a>
                 <div id={"com_id" + props.message[2]} class="overlay">
                     <div class="popup">
-                        <img style={props.DP} src={require("./CSS/def_dp.png")} />
+                        <p style={{ color: "rgba(0,0,0,0.5)" }}>Replying to {props.message[0]}</p>
+                        <img style={props.DP} src={props.propic} />
                         <h2>{props.message[0]}</h2>
                         <a class="close" href="#">&times;</a>
                         <div class="content">

@@ -26,8 +26,18 @@ class Profiles extends Component {
       messages_len: -1,
       isfollow: "Follow",
       own: false,
-      edit_details: {},
-      user_details: {},
+      edit_details: {
+        name: "",
+        bio: "",
+        location: "",
+        profilepic: "",
+      },
+      user_details: {
+        name: "",
+        bio: "",
+        location: "",
+        profilepic: "",
+      },
       notif_num: "",
     };
   }
@@ -234,7 +244,7 @@ class Profiles extends Component {
         check = "checked";
       }
       var comment_cont = "";
-      return <Mess_box handle_messbox_onClick={this.handle_messbox_onClick} comment_cont={comment_cont} handle_comments={this.handle_comments} handle_comments2={this.handle_comments2} close_popup={this.close_popup} check_like={check} pname={this.props.match.params.profilename} message={cur_mess} DP={DP} likefun={this.handle_likes} />;
+      return <Mess_box handle_messbox_onClick={this.handle_messbox_onClick} comment_cont={comment_cont} propic={this.state.user_details.profilepic} handle_comments={this.handle_comments} handle_comments2={this.handle_comments2} close_popup={this.close_popup} check_like={check} pname={this.props.match.params.profilename} message={cur_mess} DP={DP} likefun={this.handle_likes} />;
     });
   }
 
@@ -248,7 +258,6 @@ class Profiles extends Component {
       self.setState({
         edit_details: temp2
       })
-      console.log(this.result)
     })
     reader.readAsDataURL(temp);
   }
@@ -356,9 +365,10 @@ class Profiles extends Component {
           </div>
           <div className="column2">
             <h5 className="Heading">{this.props.match.params.searchval}</h5>
-            <img className="profile_pic" src={this.state.user_details.profilepic} />
-            <h4>{this.props.match.params.searchval}</h4>
-            <p>{this.state.user_details.bio}</p>
+            <img style={{ marginLeft: "20px" }} className="profile_pic" src={this.state.user_details.profilepic} />
+            <h4 style={{ marginLeft: "20px" }}>{this.state.user_details.name}</h4>
+            <p style={{ marginLeft: "20px", color: "rgba(0,0,0,0.5)" }}>@{this.props.match.params.searchval}</p>
+            <p style={{ marginLeft: "20px", fontSize: "15px" }}>{this.state.user_details.bio}</p>
             {this.ownfun()}
             <br />
             <br />
