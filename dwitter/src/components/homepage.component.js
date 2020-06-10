@@ -28,6 +28,7 @@ class Home extends Component {
             messages: [],
             messages_len: -1,
             search: "",
+            dropdown: [],
             users: [],
             notif_num: "",
             user_details: {
@@ -163,6 +164,12 @@ class Home extends Component {
         this.setState({
             search: e.target.value,
         });
+        axios.get("http://localhost:7070/user/search/" + this.state.search)
+            .then(res => {
+                this.setState({
+                    dropdown: res.data,
+                })
+            })
     }
 
     handle_search_submit(e) {
@@ -317,12 +324,18 @@ class Home extends Component {
                     <div className="topnav">
                         &nbsp;&nbsp;&nbsp;&nbsp;Home
                         <input
-                            type="text"
+                            type="text" placeholder="Search Dwitter" list="names" onChange={this.handle_search}
                             style={{ marginLeft: "60px", width: "400px", height: "30px", outline: "none" }}
-                            placeholder="Search Dwitter"
-                            required
-                            onChange={this.handle_search}
                         />
+                        <datalist id="names">
+                            {this.state.dropdown.map(function (user) {
+                                return (
+                                    <option style={{ backgroundColor: "white" }} key={user.name} value={user.profilename}>
+                                        {user.name}
+                                    </option>
+                                );
+                            })}
+                        </datalist>
                         <i style={{ cursor: "pointer" }} onClick={this.handle_search_submit} className="material-icons">search</i>
 
                     </div>

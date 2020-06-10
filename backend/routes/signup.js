@@ -117,5 +117,25 @@ router.route("/update/:profilename").post(function (req, res) {
 
 })
 
+router.route("/search/:searchval").get(function (req, res) {
+  User.find({
+    $or: [
+      { "name": { $regex: req.params.searchval, $options: "i" } },
+      { "profilename": { $regex: req.params.searchval, $options: "i" } }
+    ]
+  })
+    .then(x => {
+      var send = []
+      var i = 0;
+      console.log(x.length)
+      for (i = 0; i < x.length; i++) {
+        send.push({
+          name: x[i].name,
+          profilename: x[i].profilename,
+        });
+      }
+      res.json(send)
+    })
+})
 
 module.exports = router;
