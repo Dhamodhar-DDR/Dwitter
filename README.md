@@ -8,3 +8,6 @@ Full stack web application using MERN.
 # Sample User Credentials!
 * username : Dhamu_DDR
 * password : DDRpassDDR
+# Screenshots
+![dwitter](readme_pic1.png)
+![dwitter](readme_pic2.png)
