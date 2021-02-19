@@ -9,5 +9,5 @@ Full stack web application using MERN.
 * username : Dhamu_DDR
 * password : DDRpassDDR
 # Screenshots
-![dwitter](readme_pic1.png)
-![dwitter](readme_pic2.png)
+![pic1](https://github.com/Dhamodhar-DDR/Twitter_Clone-Dwitter/blob/master/dwitter/public/readme_pic1.png)
+![pic2](https://github.com/Dhamodhar-DDR/Twitter_Clone-Dwitter/blob/master/dwitter/public/readme_pic2.png)
