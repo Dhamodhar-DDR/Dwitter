@@ -1,4 +1,4 @@
-#Dwitter
+# Dwitter
 Full stack web application using MERN.
 # Running on your system
 * Open the dwitter/ directory and run npm install
