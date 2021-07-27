@@ -38,6 +38,6 @@ app.use("/commentroute", commentRoute);
 app.use("/notifications", notificationsRoute);
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log("Server is listening on port: " + port);
 });
