@@ -1,13 +1,15 @@
 # Dwitter
-Full stack web application using MERN.
-# Running on your system
-* Open the dwitter/ directory and run npm install
-* Open the bakend/ directory and run node server.js
-* Finally, Open the dwitter/ directory and run npm start
-* The app runs on http://localhost:3000
-# Sample User Credentials!
-* username : Dhamu_DDR
-* password : DDRpassDDR
+Full stack web application using MERN. 
+Deployed on : dwitter0.herokuapp.com
+
+# Setup and Run Locally
+```shell
+npm install
+cd client/ && npm install && npm run build
+node server.js
+```
+* The app runs locally on http://localhost:8080
+
 # Screenshots
 ![pic1](https://github.com/Dhamodhar-DDR/Dwitter/blob/master/public/readme_pic1.png)
 ![pic2](https://github.com/Dhamodhar-DDR/Dwitter/blob/master/public/readme_pic2.png)

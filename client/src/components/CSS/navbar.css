@@ -1,0 +1,122 @@
+
+
+.column0 {
+  float: left;
+  background-color: rgba(148, 226, 245, 0.479);
+  width: 15.5%;
+  min-height: 55em;
+}
+.column1 {
+  float: left;
+    /* filter: blur(8px);
+  -webkit-filter: blur(8px); */
+  width: 15%;
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+     -ms-user-select: none; /* Internet Explorer/Edge */
+         user-select: none; 
+  
+}
+
+.lefnav {
+  position: fixed;
+}
+.column2 {
+  border: 1px solid rgba(187, 183, 183, 0.609);
+  float: left;
+  width: 34%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+.column3 {
+  float: right;
+  width: 20.5%;
+  min-height: 55em;
+  background-color:rgba(148, 226, 245, 0.479);
+}
+.nav-item {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.nav-link {
+  margin-bottom: 500px;
+  text-align: center;
+  height: 50px;
+  width: 13em;
+  display:inline-block;
+  padding:0.3em 1.2em;
+  padding-right: 5em;
+  margin:0 0.1em 0.1em 0;
+  border:0.16em solid rgba(255,255,255,0);
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 1.04em;
+  color:rgb(0,0,0);
+  text-align: left;
+  transition: all 0.2s;
+  
+  }
+.nav-link:hover{
+  background-color: rgba(148, 226, 245, 0.479);
+}
+
+.nav-link2 {
+  height: 50px;
+  width: 13em;
+  display:inline-block;
+  padding:0.3em 1.2em;
+  padding-right: 5em;
+  margin:0 0.1em 0.1em 0;
+  border:0.16em solid rgba(255,255,255,0);
+  border-radius:2em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 1.04em;
+  color:rgb(0,0,0);
+  text-align: left;
+  transition: all 0.2s;
+}
+.nav-link2:hover {
+  background-color: rgba(148, 226, 245, 0.274);
+}
+
+.nav-link-pname {
+  margin-top: 545px;
+}
+
+.topnav {
+  overflow: visible;
+  font-weight:600;
+  font-size: large;
+  position: fixed;
+  margin-top: -0.1em;
+  background-color: white;
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+     -ms-user-select: none; /* Internet Explorer/Edge */
+         user-select: none; 
+  width: 622.1px;
+  height: 50px;
+  z-index: 1;
+  border-bottom: solid 1px rgba(73, 68, 68, 0.445);
+}
+
+.topnav input[type="text"] {
+  width: 90%;
+  padding: 4px;
+  border: none;
+  background-color: rgba(194, 202, 206, 0.781);
+  margin-top: 8px;
+  margin-left: 8px;
+  margin-right: 16px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  font-size: 14px;
+}
