@@ -1,6 +1,6 @@
 # Dwitter
 * Full stack web application using MERN. 
-* Deployed on : [Dwitter](dwitter0.herokuapp.com)
+* Deployed on : [Dwitter](https://dwitter0.herokuapp.com)
 
 # Setup and Run Locally
 ```shell
