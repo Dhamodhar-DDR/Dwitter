@@ -48,7 +48,7 @@ class Login extends Component {
     };
 
     axios
-      .post("api/user/login", userlog)
+      .post("/api/user/login", userlog)
       .then((res) => {
         if (res.data === "Y") {
           this.setState({
@@ -75,11 +75,12 @@ class Login extends Component {
         </div>
         <div className="back_img2">
           <div className="component">
-            <h2>Login</h2>
             <form onSubmit={this.handle_submit}>
               <div className="form">
+              <h2>Login</h2>
                 {this.state.bool}
                 <br />
+                <label for="username">Username</label>
                 <input
                   type="text"
                   required
@@ -88,7 +89,7 @@ class Login extends Component {
                   value={this.state.profilename}
                   onChange={this.handle_pname}
                 />
-                <br />
+                <label for="username">Password</label>
                 <input
                   type="password"
                   required
@@ -100,8 +101,8 @@ class Login extends Component {
                 <br />
                 <input type="submit" className="btn btn-primary btnSubmit" value="Login"></input>
                 <br />
-                <a href="/signup" > Create Account </a>
               </div>
+              <a href="/signup" className = "signup-button" > Create Account </a>
             </form>
           </div>
         </div>

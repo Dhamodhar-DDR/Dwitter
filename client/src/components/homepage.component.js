@@ -164,12 +164,16 @@ class Home extends Component {
         this.setState({
             search: e.target.value,
         });
-        axios.get("/api/user/search/" + this.state.search)
+        if(e.target.value!= ""){
+        axios.get("/api/user/search/" + e.target.value)
             .then(res => {
+                // console.log("/api/user/search/" + e.target.value);
+                console.log(res);
                 this.setState({
                     dropdown: res.data,
                 })
             })
+        }
     }
 
     handle_search_submit(e) {
@@ -295,8 +299,8 @@ class Home extends Component {
 
     render() {
         const DP = {
-            height: "9%",
-            width: "9%",
+            height: "50px",
+            width: "50px",
             marginLeft: "5px",
             marginRight: "5px",
             float: "left",
@@ -328,7 +332,8 @@ class Home extends Component {
                             style={{ marginLeft: "60px", width: "400px", height: "30px", outline: "none" }}
                         />
                         <datalist id="names">
-                            {this.state.dropdown.map(function (user) {
+                            {
+                            this.state.dropdown.map(function (user) {
                                 return (
                                     <option style={{ backgroundColor: "white" }} key={user.name} value={user.profilename}>
                                         {user.name}
@@ -345,7 +350,7 @@ class Home extends Component {
                         <form onSubmit={this.handle_submit}>
                             <div className="input-group">
                                 <div className="input-group-prepend"></div>
-                                <img src={this.state.user_details.profilepic} style={DP} alt="s" />
+                                <img src={this.state.user_details.profilepic} style={DP} alt="dp" />
                                 <textarea
                                     placeholder="What's happening?"
                                     onChange={this.handle_text}

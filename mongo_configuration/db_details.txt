@@ -1,0 +1,4 @@
+clustername: Cluster0
+dbname: dwitterdb
+password: pass123
+URI: mongodb+srv://dwitterdb:pass123@cluster0.3rddx.mongodb.net/?retryWrites=true&w=majority

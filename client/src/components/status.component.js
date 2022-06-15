@@ -95,10 +95,11 @@ class Status extends Component {
 
         var checkBox = document.getElementById(belike);
         console.log(checkBox.checked)
-
+        var temp = 0;
+        var temp2 = 0;
         if (checkBox.checked === true) {
-            var temp = this.state.likes;
-            var temp2 = this.state.message
+            temp = this.state.likes;
+            temp2 = this.state.message
             temp2.likes.push(this.props.match.params.profilename)
             this.setState({
                 likes: temp + 1,
@@ -121,9 +122,8 @@ class Status extends Component {
 
         }
         else {
-
-            var temp = this.state.likes;
-            var temp2 = this.state.message;
+            temp = this.state.likes;
+            temp2 = this.state.message;
             var index = temp2.likes.indexOf(this.props.match.params.profilename);
             temp2.likes.splice(index, 1);
 

@@ -334,11 +334,11 @@ class Profiles extends Component {
       return (
         <div>
           <a className="edit_btn" href="#popup1">Edit Profile</a>
-          <div id="popup1" class="overlay">
-            <div class="popup">
-              <a class="close" href="#">&times;</a>
+          <div id="popup1" className="overlay">
+            <div className="popup">
+              <a className="close" href="#">&times;</a>
               <form className="form-group" >
-                <label for="img"><img className="editprofile_pic" src={this.state.edit_details.profilepic} /></label>
+                <label htmlFor="img"><img className="editprofile_pic" src={this.state.edit_details.profilepic} /></label>
                 <input type="file" id="img" name="img" style={{ visibility: "hidden" }} value={this.state.edit_details.propic} onChange={this.edit_propic} accept="image/*" />
                 <br />
                 <label>Name</label>
@@ -351,7 +351,7 @@ class Profiles extends Component {
                 <label>Location</label>
                 <br />
                 <input onChange={this.edit_location} value={this.state.edit_details.location} type="text" /><br />
-                <a class="save_changes_btn" href="#" onClick={this.edit_submit}>Save Changes</a>
+                <a className="save_changes_btn" href="#" onClick={this.edit_submit}>Save Changes</a>
               </form>
             </div>
           </div>
@@ -362,8 +362,8 @@ class Profiles extends Component {
 
   render() {
     const DPstyle = {
-      height: "9%",
-      width: "9%",
+      height: "50px",
+      width: "50px",
       marginLeft: "5px",
       marginRight: "5px",
       float: "left",

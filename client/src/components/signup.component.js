@@ -25,8 +25,11 @@ class Signup extends Component {
     this.setState({
       profilename: e.target.value,
     });
-    axios.get("/user/").then((res) => {
+    
+    axios.get("/api/user/get_all").then((res) => {
+      console.log(res.data)
       if (res.data.length > 0) {
+        console.log(res);
         var users = res.data.map((user) => user.profilename);
       }
       var i = 0;
@@ -89,19 +92,19 @@ class Signup extends Component {
     };
     return (
       <div style={middle}>
-        <span class="align-middle">
+        <span className="align-middle">
           <br />
           <br />
           <br />
           <br />
           <br />
-          <div class="card" style={mystyle}>
-            <div class="card-body">
+          <div className="card" style={mystyle}>
+            <div className="card-body">
               <h3 style={heading}>Create your account</h3>
               <form onSubmit={this.handle_submit}>
                 <div className="form-group">
-                  <div class="form-group row">
-                    <div class="col-xs-4">
+                  <div className="form-group row">
+                    <div className="col-xs-4">
                       <label>Name</label>
                       <br />
                       <input
@@ -115,8 +118,8 @@ class Signup extends Component {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div class="form-group row">
-                    <div class="col-xs-4">
+                  <div className="form-group row">
+                    <div className="col-xs-4">
                       <label>Profile Name</label>
                       <br />
                       <input
@@ -131,8 +134,8 @@ class Signup extends Component {
                   </div>
                 </div>
                 <div className="form-group">
-                  <div class="form-group row">
-                    <div class="col-xs-4">
+                  <div className="form-group row">
+                    <div className="col-xs-4">
                       <label>Password</label>
                       <br />
                       <input
